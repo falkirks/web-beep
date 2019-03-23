@@ -133,27 +133,38 @@ class BeepCmdLeaf {
       return el.trim().length > 0;
     });
 
-    for(let i = 0; i < line.length - 1; i += 2){
-      switch(line[i]){
+    let out = [];
+    for(let i = 0; i < line.length; i ++){
+      if(line[i].startsWith('-') && line[i].length > 2){
+        out.push(line[i].substring(0, 2));
+        out.push(line[i].substring(2));
+      } else {
+        out.push(line[i]);
+      }
+    }
+
+
+    for(let i = 0; i < out.length - 1; i += 2){
+      switch(out[i]){
         case '-f':
-          this.freq = parseFloat(line[i+1]);
+          this.freq = parseFloat(out[i+1]);
           break;
         case '-l':
-          this.len = parseInt(line[i+1]);
+          this.len = parseInt(out[i+1]);
           break;
         case '-r':
-          this.reps = parseInt(line[i+1]);
+          this.reps = parseInt(out[i+1]);
           break;
         case '-d':
           this.delayAfterLast = false;
-          this.delay = parseInt(line[i+1]);
+          this.delay = parseInt(out[i+1]);
           break;
         case '-D':
           this.delayAfterLast = true;
-          this.delay = parseInt(line[i+1]);
+          this.delay = parseInt(out[i+1]);
           break;
         default:
-          throw 'Undefined flag for beep with name"' + line[i] + '"';
+          throw 'Undefined flag for beep with name"' + out[i] + '"';
       }
     }
   }
