@@ -126,8 +126,10 @@ class BeepCmdLeaf {
     }
 
     this.reps = 1;
-    this.delay = 0;
+    this.delay = 100;
     this.delayAfterLast = false;
+    this.freq = 440;
+    this.len = 200;
 
     line = line.filter(function (el) {
       return el.trim().length > 0;
