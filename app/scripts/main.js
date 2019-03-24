@@ -1,4 +1,4 @@
-let synth = new Tone.Synth().toMaster();
+let synth;
 
 let bootstrap_alert = function() {}
 bootstrap_alert.danger = function(message) {
@@ -22,6 +22,7 @@ let beepCommands = [];
 
 $('#execBtn').click(function () {
   $('#execBtn').prop('disabled', true);
+  synth = new Tone.Synth().toMaster();
 
   bootstrap_alert.empty();
 
