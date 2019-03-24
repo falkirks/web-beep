@@ -1,4 +1,21 @@
 let synth;
+const importCanary = 'wb&*';
+
+function attemptFragmentLoad(fragment){
+  fragment = fragment.substring(1);
+  fragment = Base64.decode(fragment);
+  if(fragment.startsWith(importCanary)){
+    $('#songEntry').val(fragment.replace(importCanary, ''));
+  } else {
+    console.log('cant import from URL due to missing canary');
+  }
+}
+
+function saveToFragment(str){
+  str = importCanary + str;
+  str = Base64.encode(str);
+  window.location.hash = str;
+}
 
 let bootstrap_alert = function() {}
 bootstrap_alert.danger = function(message) {
@@ -14,6 +31,12 @@ bootstrap_alert.empty = function(){
   $('#alert_placeholder').html('');
 };
 
+$(document).ready(function () {
+  if(window.location.hash) {
+    attemptFragmentLoad(window.location.hash);
+  }
+});
+
 
 let definedVars = {};
 
@@ -22,6 +45,7 @@ let beepCommands = [];
 
 $('#execBtn').click(function () {
   Tone.start();
+  saveToFragment($('#songEntry').val()); // save to URL for copying
   $('#execBtn').prop('disabled', true);
   synth = new Tone.Synth().toMaster();
 
