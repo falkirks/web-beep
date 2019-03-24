@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -23,24 +23,26 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="container">
-      <div class="jumbotron">
+      <div class="jumbotron" role="banner">
         <h1 class="display-3">Beep!</h1>
         <p class="lead">This website can execute <code>beep</code> songs in your browser, so even if your system doesn't have <code>beep</code> installed you won't miss out on the fun.</p>
       </div>
 
-      <div id = "alert_placeholder"></div>
+      <div role="main">
+        <div id = "alert_placeholder"></div>
 
-      <div class="row marketing">
-        <div class="form-group col-sm-12">
-          <label for="songEntry">Song data</label>
-          <textarea class="form-control" id="songEntry" rows="20"></textarea>
-        </div>
-        <div class="form-group col-sm-12">
-          <button type="button" id="execBtn" class="btn btn-block btn-primary">Play song</button>
+        <div class="row marketing">
+          <div class="form-group col-sm-12">
+            <label for="songEntry">Song data</label>
+            <textarea class="form-control" id="songEntry" rows="20"></textarea>
+          </div>
+          <div class="form-group col-sm-12">
+            <button type="button" id="execBtn" class="btn btn-block btn-primary">Play song</button>
+          </div>
         </div>
       </div>
 
-      <div class="footer">
+      <div class="footer" role="contentinfo">
         <p>Made with ♥ by <a href="https://falkirks.com">Falkirks</a></p>
       </div>
     </div>

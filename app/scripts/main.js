@@ -5,6 +5,11 @@ bootstrap_alert.danger = function(message) {
   $('#alert_placeholder').html('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
 };
 
+bootstrap_alert.info = function(message) {
+  $('#alert_placeholder').html('<div class="alert alert-info"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
+};
+
+
 bootstrap_alert.empty = function(){
   $('#alert_placeholder').html('');
 };
@@ -22,7 +27,7 @@ $('#execBtn').click(function () {
 
   definedVars = [];
   beepCommands = [];
-  let text = $('#songEntry').val().replace(/&&/g, '\n').replace('--new', '-n');
+  let text = $('#songEntry').val().replace(/&&/g, '\n').replace('--new', '-n').replace('--help', '-h').replace('--version', '-v');
   let lines = text.split('\n');
   let out = [];
   let startLine = true;
@@ -145,11 +150,20 @@ class BeepCmdLeaf {
       }
     }
 
+    out.push('null');
 
     for(let i = 0; i < out.length - 1; i += 2){
       switch(out[i]){
         case '-f':
           this.freq = parseFloat(out[i+1]);
+          break;
+        case '-v':
+          i--; // This flag takes no args
+          bootstrap_alert.info('web-beep version 0 and should be interoperable with latest beep');
+          break;
+        case '-h':
+          i--; // This flag takes no args
+          bootstrap_alert.info('See <a href="https://linux.die.net/man/1/beep">the man page</a> for help.');
           break;
         case '-l':
           this.len = parseInt(out[i+1]);

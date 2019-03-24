@@ -35,7 +35,6 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 1.5rem;
-  color: #777;
   border-top: .05rem solid #e5e5e5;
 }
 
@@ -84,4 +83,14 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+code{
+  color: #bc296e !important;
+}
+.btn-primary{
+  background-color: #0157b2 !important;
+  border-color: #0157b2 !important;
+}
+a{
+  color: #0157b2 !important;
 }
