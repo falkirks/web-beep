@@ -21,6 +21,7 @@ let beepCommands = [];
 
 
 $('#execBtn').click(function () {
+  Tone.start();
   $('#execBtn').prop('disabled', true);
   synth = new Tone.Synth().toMaster();
 
