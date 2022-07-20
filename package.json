@@ -9,6 +9,7 @@
     "js-base64": "^2.5.1",
     "modernizr": "^3.6.0",
     "popper.js": "^1.14.6",
+    "sass": "^1.53.0",
     "tone": "^13.4.9"
   },
   "devDependencies": {

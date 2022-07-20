@@ -24,7 +24,7 @@ function styles() {
   return src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.if(!isProd, $.sourcemaps.init()))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass.sync().on('error', sass.logError))
     .pipe($.postcss([
       autoprefixer()
     ]))
