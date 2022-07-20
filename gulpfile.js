@@ -9,6 +9,7 @@ const del = require('del');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const { argv } = require('yargs');
+const sass = require('gulp-sass')(require('sass'));
 
 const $ = gulpLoadPlugins();
 const server = browserSync.create();
@@ -23,11 +24,7 @@ function styles() {
   return src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.if(!isProd, $.sourcemaps.init()))
-    .pipe($.sass.sync({
-      outputStyle: 'expanded',
-      precision: 10,
-      includePaths: ['.']
-    }).on('error', $.sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe($.postcss([
       autoprefixer()
     ]))
